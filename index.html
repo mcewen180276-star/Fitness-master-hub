@@ -356,6 +356,27 @@ a{color:#2168c8}a:hover{text-decoration:none}
 #choreo #chViewerPlaylistBar label{display:flex;flex:1 1 155px;flex-direction:column;gap:2px;font-size:.75rem;font-weight:700;margin:0}
 #choreo #chViewerPlaylistBar select{width:100%;min-width:0;font-size:.8rem;padding:7px}
 #choreo #chViewerPlaylistBar button{font-size:.75rem;padding:8px;min-height:35px;margin:0}
+
+/* V14.1 — uncluttered viewer and accessible complete playlist editors */
+#choreo .ch-main{min-width:0}
+#choreo #chViewerPlaylistBar{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto auto;align-items:end;gap:7px;margin:8px 0 0;padding:11px;border-radius:12px 12px 0 0;background:#eef5ff;border-color:#c9dced}
+#choreo #chViewerPlaylistBar label{min-width:0;flex:initial;font-size:.77rem}
+#choreo #chViewerPlaylistBar button{white-space:nowrap;font-weight:650;border-radius:7px}
+#choreo #chPlaylistWorkbench{border:1px solid #c9dced;border-top:0;border-radius:0 0 12px 12px;background:#fff;padding:8px;margin:0 0 12px}
+#choreo .ch-workbench-heading{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;padding:4px 7px 9px;color:#274b74}
+#choreo .ch-workbench-heading span{font-size:.74rem;color:#64748b}
+#choreo #chPlaylistWorkbenchPanels{display:grid;grid-template-columns:1fr;gap:6px}
+#choreo #chPlaylistWorkbenchPanels>details{width:100%;box-sizing:border-box;border:1px solid #d7e2ee;border-radius:9px;background:#f8fbff;margin:0;min-width:0}
+#choreo #chPlaylistWorkbenchPanels>details>summary{cursor:pointer;padding:11px;font-size:.86rem;font-weight:750;color:#244b74;list-style-position:inside}
+#choreo #chPlaylistWorkbenchPanels>details[open]>summary{border-bottom:1px solid #d7e2ee;background:#eaf3ff}
+#choreo #chPlaylistWorkbenchPanels .ch-music-inner,#choreo #chPlaylistWorkbenchPanels #chPlaylistPanel{padding:10px;max-width:100%;box-sizing:border-box}
+#choreo #chPlaylistWorkbenchPanels .ch-song-list{max-height:300px;overflow-y:auto}
+#choreo #chPlaylistWorkbenchPanels button{min-height:34px}
+#choreo #chPlaylistWorkbenchPanels .grid{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+#choreo #chPlaylistWorkbenchPanels select,#choreo #chPlaylistWorkbenchPanels input{max-width:100%;box-sizing:border-box}
+#choreo #chPlaylistWorkbenchPanels .ch-music-accordion{display:block!important}
+@media(max-width:1000px){#choreo #chViewerPlaylistBar{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto}#choreo #chViewerAddMusic{grid-column:1/-1;justify-self:start}}
+@media(max-width:650px){#choreo #chViewerPlaylistBar{grid-template-columns:minmax(0,1fr) auto;gap:7px}#choreo #chViewerPlaylistBar label{min-width:0}#choreo #chViewerAddMusic{grid-column:auto}#choreo .ch-workbench-heading span{display:none}}
 </style></head><body><header><div><h1>◆ Fitness Master Hub</h1><small>Your complete teaching workspace</small></div><button id="install" class="hidden">Install app</button></header><nav class="tabs" id="nav"><button data-tab="home" class="active">Home</button><button data-tab="library">Exercises</button><button data-tab="builder">Class Builder</button><button data-tab="plans">Saved Classes</button><button data-tab="timer">Class Timer</button><button data-tab="clients">Clients</button><button data-tab="notes">Teaching Notes</button><button data-tab="programmes">Programmes</button><button data-tab="specialists">Specialist Tools</button><button data-tab="choreo">Choreography</button><button data-tab="organiser">File Organiser</button><button data-tab="settings">Backup & Settings</button></nav><main class="shell">
 <section id="home" class="active"><div class="hero"><h2>Everything you teach. One place.</h2><p>Plan sessions, find exercises, manage clients and keep your teaching notes organised. All your data stays on this device unless you export it.</p><button data-go="builder">＋ Build a class</button> <button data-go="library">Browse exercises</button></div><div class="grid"><div class="card metric"><div class="metric-icon">🏋️</div><div><div class="stat" id="exerciseCount">0</div><div class="muted">Library exercises</div></div></div><div class="card metric"><div class="metric-icon">📋</div><div><div class="stat" id="planCount">0</div><div class="muted">Saved classes</div></div></div><div class="card metric"><div class="metric-icon">👥</div><div><div class="stat" id="clientCount">0</div><div class="muted">Clients</div></div></div></div><h2>Quick access</h2><div class="grid"><div class="card"><h3>🏋️ Class Builder</h3><p class="muted">Generate or manually assemble circuits, Yoga, Boxercise, strength and cardio classes.</p><button data-go="builder">Open builder</button></div><div class="card"><h3>🔎 Exercise Library</h3><p class="muted">Search by name, equipment and training type. Add your own exercises.</p><button data-go="library">Explore library</button></div><div class="card"><h3>⏱️ Class Timer</h3><p class="muted">Large work/rest countdown for circuit sessions.</p><button data-go="timer">Open timer</button></div><div class="card"><h3>💾 Backup</h3><p class="muted">Keep a portable copy of your saved classes, notes and clients.</p><button data-go="settings">Backup data</button></div></div><p class="notice">New modules: client programme studio, specialist class tools, choreography PDF viewing and file organisation. Advanced music integration and full health questionnaires are still in development.</p></section>
 <section id="library"><h2>Universal Exercise Library</h2><div class="card"><div class="row"><div><label>Search exercises</label><input id="search" placeholder="Name, muscles, equipment, instructions..."></div><div><label>Equipment</label><select id="filterEquip"><option value="">All equipment</option></select></div><div><label>Training type</label><select id="filterType"><option value="">All types</option></select></div></div><div class="grid"><div><label>Body area / muscle</label><input id="filterMuscle" placeholder="e.g. shoulders, glutes, core"></div><div><label>Movement pattern</label><select id="filterMovement"><option value="">All movements</option><option>Squat / Lunge</option><option>Hinge</option><option>Push</option><option>Pull</option><option>Carry</option><option>Rotation</option><option>Stability</option><option>Cardio</option><option>Other</option></select></div><div><label>Difficulty</label><select id="filterLevel"><option value="">All levels</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div><div><label>Impact</label><select id="filterImpact"><option value="">Any impact</option><option>Low / moderate</option><option>High</option></select></div><div><label>Body position</label><select id="filterPosition"><option value="">Any position</option><option>Seated</option><option>Standing / mixed</option><option>Floor</option><option>Hanging</option></select></div><div><label>Sort by</label><select id="filterSort"><option value="name">Exercise name</option><option value="equipment">Equipment</option><option value="type">Training type</option><option value="level">Difficulty</option></select></div></div><div class="row"><button id="clearExerciseFilters">Clear filters</button><button id="exportExerciseCsv">Export exercise list CSV</button></div><p id="resultsCount" class="muted"></p><div id="exerciseList"></div></div><div class="card"><h3>Add your own exercise</h3><div class="grid"><div><label>Exercise name</label><input id="newName"></div><div><label>Equipment</label><input id="newEquip" placeholder="e.g. Dumbbell"></div><div><label>Type</label><select id="newType"><option>Strength</option><option>Cardio</option><option>Boxercise</option><option>Yoga</option><option>Seniors</option><option>Mobility</option><option>Core</option></select></div><div><label>Muscles / focus</label><input id="newMuscle"></div></div><label>Technique and adaptations</label><textarea id="newDesc"></textarea><label>Demo URL (optional)</label><input id="newUrl" placeholder="https://..."><button class="primary" id="addExercise">Add exercise</button></div></section>
@@ -1982,5 +2003,57 @@ $('chPageSongUnlink').onclick=()=>{
   sync();
  }
  paint();
+})();
+
+// V14.1: Full playlist workbench beside the viewer. Move existing live controls,
+// rather than cloning them, to preserve their event listeners and saved data.
+(function(){
+ const bar=$('chViewerPlaylistBar');
+ const main=bar?.closest('.ch-main');
+ const notes=document.querySelector('#choreo .ch-playlist-drawer');
+ const music=document.querySelector('#chMusicPanel [data-music-section="playlists"]');
+ if(!bar||!main||!notes||!music)return;
+ const workbench=document.createElement('div');
+ workbench.id='chPlaylistWorkbench';
+ workbench.innerHTML='<div class="ch-workbench-heading"><b>Class playlists</b><span>Choose, build and arrange music and choreography without leaving the viewer</span></div><div id="chPlaylistWorkbenchPanels"></div>';
+ bar.insertAdjacentElement('afterend',workbench);
+ const panels=$('chPlaylistWorkbenchPanels');
+ // Keep both independent and collapsible. Existing elements and event handlers survive.
+ notes.open=false;
+ music.open=false;
+ notes.querySelector('summary').textContent='📄 Teaching notes — create, add pages and reorder';
+ music.querySelector('summary').textContent='♫ Music — create, add songs and reorder';
+ panels.append(notes,music);
+ // The album library is also available here, in a collapsed panel. Moving the
+ // existing DOM prevents duplicate IDs and retains imported file input handlers.
+ const library=document.querySelector('#chMusicPanel [data-music-section="library"]');
+ if(library){library.open=false;library.querySelector('summary').textContent='♫ Music library — choose songs to add';panels.append(library)}
+ const manage=(id)=>{
+  const section=$(id);if(!section)return;
+  section.open=true;
+  section.scrollIntoView({behavior:'smooth',block:'nearest'});
+ };
+ $('chViewerNotesManage').onclick=()=>manage('chPlaylistWorkbenchNotes');
+ $('chViewerMusicManage').onclick=()=>manage('chPlaylistWorkbenchMusic');
+ notes.id='chPlaylistWorkbenchNotes';
+ music.id='chPlaylistWorkbenchMusic';
+ const libraryBtn=document.createElement('button');
+ libraryBtn.type='button';libraryBtn.id='chViewerAddMusic';libraryBtn.textContent='Browse songs +';
+ libraryBtn.onclick=()=>{manage('chPlaylistWorkbenchLibrary');music.open=true};
+ if(library)library.id='chPlaylistWorkbenchLibrary';
+ $('chViewerMusicManage').insertAdjacentElement('afterend',libraryBtn);
+ // Selecting a playlist makes its actual editor visible, not just its name.
+ $('chViewerNotes').addEventListener('change',()=>manage('chPlaylistWorkbenchNotes'));
+ $('chViewerMusic').addEventListener('change',()=>manage('chPlaylistWorkbenchMusic'));
+ // When a song is added from the library, keep both library and music editor open.
+ $('chMusicLibrary').addEventListener('click',e=>{
+  if(e.target.closest('[data-maddgroup]')){
+   music.open=true;
+   if(library)library.open=true;
+  }
+ },true);
+ // Only show the main page's PDF toolbar and playlist workbench once.
+ const intro=document.querySelector('#choreo .section-intro');
+ if(intro)intro.textContent='Choose a Les Mills programme and release, then work with your choreography and music playlists beside the PDF viewer.';
 })();
 </script></body></html>
