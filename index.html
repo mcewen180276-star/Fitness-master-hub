@@ -1260,7 +1260,7 @@ function chMusicStartFolder(all=false){
  if(!all&&!album)return toast('Select a folder or album first');
  const items=[...chMusicState.files.entries()].filter(([id,x])=>all||x.info.album===album).sort((a,b)=>a[1].info.path.localeCompare(b[1].info.path,undefined,{numeric:true}));
  if(!items.length)return toast('Import some music first');
- chMusicState.queue=items.map(([id])=>id);
+ chMusicState.queue=chMusicLogicalQueue(chMusicGroups(items));
  chMusicState.queueTitle=all?'All imported music':album;
  chMusicPlayQueueAt(0);
 }
@@ -1288,7 +1288,20 @@ $('chMusicPlay').onclick=()=>{
  }else if(a.paused)a.play().catch(()=>{});else a.pause();
 };
 let chMusicAutoAdvance=false;
-$('chAudio').onended=()=>{chMusicAutoAdvance=true;try{chMusicStep(1)}finally{chMusicAutoAdvance=false}};
+$('chAudio').onended=()=>{
+ const queue=chMusicActiveQueue();
+ let next=chMusicState.playing+1;
+ while(next<queue.length&&!chMusicUrl(queue[next]))next++;
+ if(next>=queue.length){
+  $('chNowPlaying').textContent+=' · Finished';
+  return;
+ }
+ chMusicAutoAdvance=true;
+ try{
+  if(chMusicState.queue)chMusicPlayQueueAt(next);
+  else chMusicPlayAt(next);
+ }finally{chMusicAutoAdvance=false}
+};
 $('chMusicPrev').onclick=()=>chMusicStep(-1);
 $('chMusicNext').onclick=()=>chMusicStep(1);
 // Song-to-page link controls directly beside the open PDF.
