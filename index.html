@@ -344,7 +344,19 @@ a{color:#2168c8}a:hover{text-decoration:none}
 #choreo .ch-pdf-remove-actions{display:flex;flex-direction:column;gap:6px;border-top:1px solid #e2e8f0;padding-top:9px;margin-top:10px}
 #choreo .ch-pdf-remove-actions button{width:100%;margin:0;white-space:normal;font-size:.75rem}
 #choreo .ch-side>.row:empty{display:none!important}
-#choreo #chMusicPlaylistItems .ch-song-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}#choreo #chMusicPlaylistItems .ch-song-actions button{margin:0;padding:7px 4px;min-width:0}#choreo .ch-playlist-drawer #chPlaylistItems .item{margin:5px 0;padding:8px}#choreo .ch-playlist-drawer #chPlaylistItems .item button{min-height:32px}#choreo #chMusicPanel details.ch-music-accordion{width:100%;box-sizing:border-box}#choreo #chMusicPanel details.ch-music-accordion[open]>summary{background:#e9f3ff}#choreo #chMusicPanel #chMusicPlaylistItems{max-height:350px;overflow-y:auto}</style></head><body><header><div><h1>◆ Fitness Master Hub</h1><small>Your complete teaching workspace</small></div><button id="install" class="hidden">Install app</button></header><nav class="tabs" id="nav"><button data-tab="home" class="active">Home</button><button data-tab="library">Exercises</button><button data-tab="builder">Class Builder</button><button data-tab="plans">Saved Classes</button><button data-tab="timer">Class Timer</button><button data-tab="clients">Clients</button><button data-tab="notes">Teaching Notes</button><button data-tab="programmes">Programmes</button><button data-tab="specialists">Specialist Tools</button><button data-tab="choreo">Choreography</button><button data-tab="organiser">File Organiser</button><button data-tab="settings">Backup & Settings</button></nav><main class="shell">
+#choreo #chMusicPlaylistItems .ch-song-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}#choreo #chMusicPlaylistItems .ch-song-actions button{margin:0;padding:7px 4px;min-width:0}#choreo .ch-playlist-drawer #chPlaylistItems .item{margin:5px 0;padding:8px}#choreo .ch-playlist-drawer #chPlaylistItems .item button{min-height:32px}#choreo #chMusicPanel details.ch-music-accordion{width:100%;box-sizing:border-box}#choreo #chMusicPanel details.ch-music-accordion[open]>summary{background:#e9f3ff}#choreo #chMusicPanel #chMusicPlaylistItems{max-height:350px;overflow-y:auto}
+#choreo #chUpNext{width:100%;border-top:1px solid #b9cde6;padding-top:6px}
+#choreo #chUpNext>summary{cursor:pointer;font-weight:700;font-size:.82rem;padding:7px 4px}
+#choreo #chUpNextCount{font-weight:400;color:#456}
+#choreo #chUpNextList{max-height:260px;overflow:auto;display:flex;flex-direction:column;gap:3px}
+#choreo #chUpNextList .ch-upnext-song{display:flex;align-items:center;gap:9px;text-align:left;width:100%;border:1px solid #d9e3ee;border-radius:7px;background:white;color:#234;padding:8px;font-size:.8rem;min-height:35px;cursor:pointer}
+#choreo #chUpNextList .ch-upnext-song.active{background:#d7eaff;border-color:#6a9bd2;font-weight:700}
+#choreo #chUpNextList .ch-upnext-song>span:first-child{flex:0 0 24px}
+#choreo #chViewerPlaylistBar{display:flex;flex-wrap:wrap;align-items:end;gap:6px;padding:7px 9px;margin:5px 0;border:1px solid #cbdced;border-radius:9px;background:#f4f8fe}
+#choreo #chViewerPlaylistBar label{display:flex;flex:1 1 155px;flex-direction:column;gap:2px;font-size:.75rem;font-weight:700;margin:0}
+#choreo #chViewerPlaylistBar select{width:100%;min-width:0;font-size:.8rem;padding:7px}
+#choreo #chViewerPlaylistBar button{font-size:.75rem;padding:8px;min-height:35px;margin:0}
+</style></head><body><header><div><h1>◆ Fitness Master Hub</h1><small>Your complete teaching workspace</small></div><button id="install" class="hidden">Install app</button></header><nav class="tabs" id="nav"><button data-tab="home" class="active">Home</button><button data-tab="library">Exercises</button><button data-tab="builder">Class Builder</button><button data-tab="plans">Saved Classes</button><button data-tab="timer">Class Timer</button><button data-tab="clients">Clients</button><button data-tab="notes">Teaching Notes</button><button data-tab="programmes">Programmes</button><button data-tab="specialists">Specialist Tools</button><button data-tab="choreo">Choreography</button><button data-tab="organiser">File Organiser</button><button data-tab="settings">Backup & Settings</button></nav><main class="shell">
 <section id="home" class="active"><div class="hero"><h2>Everything you teach. One place.</h2><p>Plan sessions, find exercises, manage clients and keep your teaching notes organised. All your data stays on this device unless you export it.</p><button data-go="builder">＋ Build a class</button> <button data-go="library">Browse exercises</button></div><div class="grid"><div class="card metric"><div class="metric-icon">🏋️</div><div><div class="stat" id="exerciseCount">0</div><div class="muted">Library exercises</div></div></div><div class="card metric"><div class="metric-icon">📋</div><div><div class="stat" id="planCount">0</div><div class="muted">Saved classes</div></div></div><div class="card metric"><div class="metric-icon">👥</div><div><div class="stat" id="clientCount">0</div><div class="muted">Clients</div></div></div></div><h2>Quick access</h2><div class="grid"><div class="card"><h3>🏋️ Class Builder</h3><p class="muted">Generate or manually assemble circuits, Yoga, Boxercise, strength and cardio classes.</p><button data-go="builder">Open builder</button></div><div class="card"><h3>🔎 Exercise Library</h3><p class="muted">Search by name, equipment and training type. Add your own exercises.</p><button data-go="library">Explore library</button></div><div class="card"><h3>⏱️ Class Timer</h3><p class="muted">Large work/rest countdown for circuit sessions.</p><button data-go="timer">Open timer</button></div><div class="card"><h3>💾 Backup</h3><p class="muted">Keep a portable copy of your saved classes, notes and clients.</p><button data-go="settings">Backup data</button></div></div><p class="notice">New modules: client programme studio, specialist class tools, choreography PDF viewing and file organisation. Advanced music integration and full health questionnaires are still in development.</p></section>
 <section id="library"><h2>Universal Exercise Library</h2><div class="card"><div class="row"><div><label>Search exercises</label><input id="search" placeholder="Name, muscles, equipment, instructions..."></div><div><label>Equipment</label><select id="filterEquip"><option value="">All equipment</option></select></div><div><label>Training type</label><select id="filterType"><option value="">All types</option></select></div></div><div class="grid"><div><label>Body area / muscle</label><input id="filterMuscle" placeholder="e.g. shoulders, glutes, core"></div><div><label>Movement pattern</label><select id="filterMovement"><option value="">All movements</option><option>Squat / Lunge</option><option>Hinge</option><option>Push</option><option>Pull</option><option>Carry</option><option>Rotation</option><option>Stability</option><option>Cardio</option><option>Other</option></select></div><div><label>Difficulty</label><select id="filterLevel"><option value="">All levels</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div><div><label>Impact</label><select id="filterImpact"><option value="">Any impact</option><option>Low / moderate</option><option>High</option></select></div><div><label>Body position</label><select id="filterPosition"><option value="">Any position</option><option>Seated</option><option>Standing / mixed</option><option>Floor</option><option>Hanging</option></select></div><div><label>Sort by</label><select id="filterSort"><option value="name">Exercise name</option><option value="equipment">Equipment</option><option value="type">Training type</option><option value="level">Difficulty</option></select></div></div><div class="row"><button id="clearExerciseFilters">Clear filters</button><button id="exportExerciseCsv">Export exercise list CSV</button></div><p id="resultsCount" class="muted"></p><div id="exerciseList"></div></div><div class="card"><h3>Add your own exercise</h3><div class="grid"><div><label>Exercise name</label><input id="newName"></div><div><label>Equipment</label><input id="newEquip" placeholder="e.g. Dumbbell"></div><div><label>Type</label><select id="newType"><option>Strength</option><option>Cardio</option><option>Boxercise</option><option>Yoga</option><option>Seniors</option><option>Mobility</option><option>Core</option></select></div><div><label>Muscles / focus</label><input id="newMuscle"></div></div><label>Technique and adaptations</label><textarea id="newDesc"></textarea><label>Demo URL (optional)</label><input id="newUrl" placeholder="https://..."><button class="primary" id="addExercise">Add exercise</button></div></section>
 <section id="builder"><h2>Class Builder</h2><div class="card no-print"><div class="grid"><div><label>Class name</label><input id="className" value="My class"></div><div><label>Class type</label><select id="classType"><option>Circuit</option><option>Boxercise</option><option>Yoga</option><option>Seniors</option><option>Gym Cardio</option><option>Teambeats</option><option>Strength</option><option>HIIT</option><option>General Fitness</option></select></div><div><label>Duration (minutes)</label><input type="number" id="duration" value="45" min="5" max="180"></div><div><label>Participants</label><input type="number" id="participants" value="12" min="1"></div><div><label>Stations / exercises</label><input type="number" id="stations" value="8" min="1" max="40"></div><div><label>Work seconds</label><input type="number" id="work" value="45" min="10"></div><div><label>Rest seconds</label><input type="number" id="rest" value="15" min="0"></div><div><label>Format</label><select id="format"><option>Stations</option><option>Everyone together</option><option>Pairs</option><option>Threes</option></select></div></div><label>Equipment available (select any; none means bodyweight only)</label><div id="equipmentChecks" class="grid"></div><div class="row"><button class="primary" id="generate">Generate class</button><button id="addStation">Add station manually</button><button id="savePlan">Save class</button></div></div><div class="card"><h3 id="previewTitle">Class preview</h3><div id="classSummary" class="muted"></div><div id="stationList"></div><div class="no-print"><button onclick="window.print()">Print class</button><button id="clearClass">Clear</button></div></div></section>
@@ -1884,5 +1896,91 @@ $('chPageSongUnlink').onclick=()=>{
  const create=$('chMusicCreate');
  create.addEventListener('click',()=>{library.open=true;playlists.open=true},true);
  // Never auto-collapse another section when a playlist is edited.
+})();
+
+// V14: compact, persistent quick-access controls and clickable Up Next queue.
+(function(){
+ const player=$('chMusicPlayer'), audio=$('chAudio');
+ if(!player||!audio)return;
+ const next=document.createElement('details');
+ next.id='chUpNext';
+ next.innerHTML='<summary>Up next <span id="chUpNextCount"></span></summary><div id="chUpNextList" class="ch-upnext-list" aria-label="Upcoming songs"></div>';
+ player.append(next);
+ function active(){
+  const q=chMusicActiveQueue();
+  return Array.isArray(q)?q:[];
+ }
+ function paint(){
+  const q=active(),pos=Number(chMusicState.playing);
+  const start=Math.max(0,Number.isFinite(pos)?pos:0);
+  $('chUpNextCount').textContent=q.length?`· ${Math.min(start+1,q.length)} of ${q.length}`:'· no queue';
+  const root=$('chUpNextList');
+  if(!q.length){root.innerHTML='<p class="muted">Choose an album or music playlist to see its songs here.</p>';return}
+  const end=Math.min(q.length,start+80);
+  root.innerHTML=q.slice(start,end).map((id,idx)=>{
+   const n=start+idx;
+   const title=chMusicDisplayTitle(id);
+   return `<button type="button" class="ch-upnext-song ${n===pos?'active':''}" data-upnext-index="${n}" ${!chMusicState.files.has(id)?'disabled':''}><span>${n===pos?'▶':n+1}</span><span>${safe(title)}</span></button>`;
+  }).join('')+(q.length>end?'<p class="muted">Showing the next 80 tracks.</p>':'');
+ }
+ $('chUpNextList').addEventListener('click',e=>{
+  const btn=e.target.closest('[data-upnext-index]');
+  if(!btn)return;
+  const n=Number(btn.dataset.upnextIndex);
+  if(chMusicState.queue)chMusicPlayQueueAt(n);
+  else chMusicPlayAt(n);
+  paint();
+ });
+ // Wrap playback entry points without changing how queue and playlists work.
+ const originalQueue=chMusicPlayQueueAt;
+ chMusicPlayQueueAt=function(...args){const result=originalQueue.apply(this,args);paint();return result};
+ const originalPlaylist=chMusicPlayAt;
+ chMusicPlayAt=function(...args){const result=originalPlaylist.apply(this,args);paint();return result};
+ const originalRender=chMusicRenderPlaylists;
+ chMusicRenderPlaylists=function(...args){const result=originalRender.apply(this,args);paint();return result};
+ // Playlist shortcuts alongside the PDF viewer, rather than hidden in the sidebar.
+ const stage=$('chPdfStage');
+ const main=stage?.closest('.ch-main')||stage?.parentElement;
+ if(main){
+  const bar=document.createElement('div');
+  bar.id='chViewerPlaylistBar';
+  bar.innerHTML='<label>Teaching notes <select id="chViewerNotes"><option value="">Select notes playlist</option></select></label><button type="button" id="chViewerNotesManage">Edit notes</button><label>Music <select id="chViewerMusic"><option value="">Select music playlist</option></select></label><button type="button" id="chViewerMusicManage">Edit music</button>';
+  main.insertBefore(bar,stage);
+  const notes=$('chViewerNotes'),music=$('chViewerMusic');
+  function fill(select,items,selected,empty){
+   const old=select.value;
+   select.replaceChildren(new Option(empty,''));
+   for(const p of items)select.add(new Option(p.name,p.id));
+   const wanted=selected||old;
+   if(items.some(p=>p.id===wanted))select.value=wanted;
+  }
+  function sync(){
+   fill(notes,extra.chPlaylists||[],$('chPlaylistSelect').value,'Notes playlist…');
+   fill(music,extra.musicPlaylists||[],$('chMusicPlaylistSelect').value,'Music playlist…');
+  }
+  notes.addEventListener('change',()=>{
+   $('chPlaylistSelect').value=notes.value;
+   $('chPlaylistSelect').dispatchEvent(new Event('change',{bubbles:true}));
+  });
+  music.addEventListener('change',()=>{
+   $('chMusicPlaylistSelect').value=music.value;
+   $('chMusicPlaylistSelect').dispatchEvent(new Event('change',{bubbles:true}));
+   paint();
+  });
+  function show(section){
+   const details=section==='notes'?document.querySelector('#choreo .ch-playlist-drawer'):document.querySelector('#chMusicPanel [data-music-section="playlists"]');
+   if(details){details.open=true;details.scrollIntoView({behavior:'smooth',block:'nearest'})}
+  }
+  $('chViewerNotesManage').onclick=()=>show('notes');
+  $('chViewerMusicManage').onclick=()=>show('music');
+  const originalNotes=chRenderPlaylists;
+  chRenderPlaylists=function(...args){const result=originalNotes.apply(this,args);sync();return result};
+  const prevMusicRender=chMusicRenderPlaylists;
+  chMusicRenderPlaylists=function(...args){const result=prevMusicRender.apply(this,args);sync();return result};
+  $('chPlaylistSelect').addEventListener('change',sync);
+  $('chMusicPlaylistSelect').addEventListener('change',sync);
+  sync();
+ }
+ paint();
 })();
 </script></body></html>
