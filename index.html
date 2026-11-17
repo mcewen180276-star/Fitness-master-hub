@@ -591,6 +591,16 @@ function chInferKey(filename){
   if(release)break;
  }
  if(!release){const m=n.match(/(?:release|rel)[\s_.-]*(\d{1,3})(?!\d)/);if(m)release=m[1]}
+ // Named releases (e.g. UNITED) need stable keys just like numbered releases.
+ // Derive the label from the original filename so page-to-song links survive reloads.
+ if(!release){
+  const base=filename.replace(/\.pdf$/i,'').trim();
+  let title=base;
+  const words=['bodypump','body pump','bodycombat','body combat','bodybalance','body balance','bodyflow','bodyattack','body attack','bodystep','body step','bodyjam','body jam','rpm','the trip','les mills'];
+  for(const word of words)title=title.replace(new RegExp(word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'ig'),' ');
+  title=title.replace(/[_\-.]+/g,' ').replace(/\s+/g,' ').trim();
+  release=title||base;
+ }
  return {programme,release};
 }
 function chOpenFolderIndex(i){
@@ -820,7 +830,7 @@ function chQuickReleases(){
  const p=$('chViewProgramme').value,q=$('chViewRelease'),old=q.value;
  const matches=chFolderPdfs.map((f,i)=>({f,i,k:chInferKey(f.name)})).filter(x=>!p||x.k.programme===p);
  matches.sort((a,b)=>(a.k.programme||'').localeCompare(b.k.programme||'')||String(a.k.release).localeCompare(String(b.k.release),undefined,{numeric:true}));
- q.innerHTML='<option value="">Choose release</option>'+matches.map(({f,i,k})=>`<option value="${i}">${safe((p?'':(k.programme||'Other')+' · ')+(k.release?'Release '+k.release:f.name.replace(/\.pdf$/i,'')))}</option>`).join('');
+ q.innerHTML='<option value="">Choose release</option>'+matches.map(({f,i,k})=>`<option value="${i}">${safe((p?'':(k.programme||'Other')+' · ')+(k.release?(/^\d+$/.test(k.release)?'Release '+k.release:k.release):f.name.replace(/\.pdf$/i,'')))}</option>`).join('');
  if([...q.options].some(o=>o.value===old))q.value=old;
 }
 $('chViewProgramme').onchange=()=>{
@@ -1212,12 +1222,12 @@ function chMusicCurrentKey(){
  return programme+'-'+release;
 }
 $('chMusicLinkCurrent').onclick=()=>{
- const key=chMusicCurrentKey();if(!key)return toast('Open a PDF with a recognisable release first');
+ const key=chMusicCurrentKey();if(!key)return toast('Open a PDF and select its programme first');
  chMusicAddLinks([{key,page:pdfPage}]);
 };
 $('chMusicLinkFromPage').onclick=$('chMusicLinkCurrent').onclick;
 $('chMusicLinkPages').onclick=()=>{
- const key=chMusicCurrentKey();if(!key)return toast('Open a PDF with a recognisable release first');
+ const key=chMusicCurrentKey();if(!key)return toast('Open a PDF and select its programme first');
  const raw=prompt('Pages to link (e.g. 3,4,7-9)',String(pdfPage));if(raw===null)return;
  const pages=chParsePages(raw);if(!pages.length)return toast('No valid pages entered');
  chMusicAddLinks(pages.map(page=>({key,page})));
