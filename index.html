@@ -344,7 +344,7 @@ a{color:#2168c8}a:hover{text-decoration:none}
 #choreo .ch-pdf-remove-actions{display:flex;flex-direction:column;gap:6px;border-top:1px solid #e2e8f0;padding-top:9px;margin-top:10px}
 #choreo .ch-pdf-remove-actions button{width:100%;margin:0;white-space:normal;font-size:.75rem}
 #choreo .ch-side>.row:empty{display:none!important}
-</style></head><body><header><div><h1>◆ Fitness Master Hub</h1><small>Your complete teaching workspace</small></div><button id="install" class="hidden">Install app</button></header><nav class="tabs" id="nav"><button data-tab="home" class="active">Home</button><button data-tab="library">Exercises</button><button data-tab="builder">Class Builder</button><button data-tab="plans">Saved Classes</button><button data-tab="timer">Class Timer</button><button data-tab="clients">Clients</button><button data-tab="notes">Teaching Notes</button><button data-tab="programmes">Programmes</button><button data-tab="specialists">Specialist Tools</button><button data-tab="choreo">Choreography</button><button data-tab="organiser">File Organiser</button><button data-tab="settings">Backup & Settings</button></nav><main class="shell">
+#choreo #chMusicPlaylistItems .ch-song-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}#choreo #chMusicPlaylistItems .ch-song-actions button{margin:0;padding:7px 4px;min-width:0}#choreo .ch-playlist-drawer #chPlaylistItems .item{margin:5px 0;padding:8px}#choreo .ch-playlist-drawer #chPlaylistItems .item button{min-height:32px}</style></head><body><header><div><h1>◆ Fitness Master Hub</h1><small>Your complete teaching workspace</small></div><button id="install" class="hidden">Install app</button></header><nav class="tabs" id="nav"><button data-tab="home" class="active">Home</button><button data-tab="library">Exercises</button><button data-tab="builder">Class Builder</button><button data-tab="plans">Saved Classes</button><button data-tab="timer">Class Timer</button><button data-tab="clients">Clients</button><button data-tab="notes">Teaching Notes</button><button data-tab="programmes">Programmes</button><button data-tab="specialists">Specialist Tools</button><button data-tab="choreo">Choreography</button><button data-tab="organiser">File Organiser</button><button data-tab="settings">Backup & Settings</button></nav><main class="shell">
 <section id="home" class="active"><div class="hero"><h2>Everything you teach. One place.</h2><p>Plan sessions, find exercises, manage clients and keep your teaching notes organised. All your data stays on this device unless you export it.</p><button data-go="builder">＋ Build a class</button> <button data-go="library">Browse exercises</button></div><div class="grid"><div class="card metric"><div class="metric-icon">🏋️</div><div><div class="stat" id="exerciseCount">0</div><div class="muted">Library exercises</div></div></div><div class="card metric"><div class="metric-icon">📋</div><div><div class="stat" id="planCount">0</div><div class="muted">Saved classes</div></div></div><div class="card metric"><div class="metric-icon">👥</div><div><div class="stat" id="clientCount">0</div><div class="muted">Clients</div></div></div></div><h2>Quick access</h2><div class="grid"><div class="card"><h3>🏋️ Class Builder</h3><p class="muted">Generate or manually assemble circuits, Yoga, Boxercise, strength and cardio classes.</p><button data-go="builder">Open builder</button></div><div class="card"><h3>🔎 Exercise Library</h3><p class="muted">Search by name, equipment and training type. Add your own exercises.</p><button data-go="library">Explore library</button></div><div class="card"><h3>⏱️ Class Timer</h3><p class="muted">Large work/rest countdown for circuit sessions.</p><button data-go="timer">Open timer</button></div><div class="card"><h3>💾 Backup</h3><p class="muted">Keep a portable copy of your saved classes, notes and clients.</p><button data-go="settings">Backup data</button></div></div><p class="notice">New modules: client programme studio, specialist class tools, choreography PDF viewing and file organisation. Advanced music integration and full health questionnaires are still in development.</p></section>
 <section id="library"><h2>Universal Exercise Library</h2><div class="card"><div class="row"><div><label>Search exercises</label><input id="search" placeholder="Name, muscles, equipment, instructions..."></div><div><label>Equipment</label><select id="filterEquip"><option value="">All equipment</option></select></div><div><label>Training type</label><select id="filterType"><option value="">All types</option></select></div></div><div class="grid"><div><label>Body area / muscle</label><input id="filterMuscle" placeholder="e.g. shoulders, glutes, core"></div><div><label>Movement pattern</label><select id="filterMovement"><option value="">All movements</option><option>Squat / Lunge</option><option>Hinge</option><option>Push</option><option>Pull</option><option>Carry</option><option>Rotation</option><option>Stability</option><option>Cardio</option><option>Other</option></select></div><div><label>Difficulty</label><select id="filterLevel"><option value="">All levels</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div><div><label>Impact</label><select id="filterImpact"><option value="">Any impact</option><option>Low / moderate</option><option>High</option></select></div><div><label>Body position</label><select id="filterPosition"><option value="">Any position</option><option>Seated</option><option>Standing / mixed</option><option>Floor</option><option>Hanging</option></select></div><div><label>Sort by</label><select id="filterSort"><option value="name">Exercise name</option><option value="equipment">Equipment</option><option value="type">Training type</option><option value="level">Difficulty</option></select></div></div><div class="row"><button id="clearExerciseFilters">Clear filters</button><button id="exportExerciseCsv">Export exercise list CSV</button></div><p id="resultsCount" class="muted"></p><div id="exerciseList"></div></div><div class="card"><h3>Add your own exercise</h3><div class="grid"><div><label>Exercise name</label><input id="newName"></div><div><label>Equipment</label><input id="newEquip" placeholder="e.g. Dumbbell"></div><div><label>Type</label><select id="newType"><option>Strength</option><option>Cardio</option><option>Boxercise</option><option>Yoga</option><option>Seniors</option><option>Mobility</option><option>Core</option></select></div><div><label>Muscles / focus</label><input id="newMuscle"></div></div><label>Technique and adaptations</label><textarea id="newDesc"></textarea><label>Demo URL (optional)</label><input id="newUrl" placeholder="https://..."><button class="primary" id="addExercise">Add exercise</button></div></section>
 <section id="builder"><h2>Class Builder</h2><div class="card no-print"><div class="grid"><div><label>Class name</label><input id="className" value="My class"></div><div><label>Class type</label><select id="classType"><option>Circuit</option><option>Boxercise</option><option>Yoga</option><option>Seniors</option><option>Gym Cardio</option><option>Teambeats</option><option>Strength</option><option>HIIT</option><option>General Fitness</option></select></div><div><label>Duration (minutes)</label><input type="number" id="duration" value="45" min="5" max="180"></div><div><label>Participants</label><input type="number" id="participants" value="12" min="1"></div><div><label>Stations / exercises</label><input type="number" id="stations" value="8" min="1" max="40"></div><div><label>Work seconds</label><input type="number" id="work" value="45" min="10"></div><div><label>Rest seconds</label><input type="number" id="rest" value="15" min="0"></div><div><label>Format</label><select id="format"><option>Stations</option><option>Everyone together</option><option>Pairs</option><option>Threes</option></select></div></div><label>Equipment available (select any; none means bodyweight only)</label><div id="equipmentChecks" class="grid"></div><div class="row"><button class="primary" id="generate">Generate class</button><button id="addStation">Add station manually</button><button id="savePlan">Save class</button></div></div><div class="card"><h3 id="previewTitle">Class preview</h3><div id="classSummary" class="muted"></div><div id="stationList"></div><div class="no-print"><button onclick="window.print()">Print class</button><button id="clearClass">Clear</button></div></div></section>
@@ -1746,5 +1746,119 @@ $('chPageSongUnlink').onclick=()=>{
  if(quick)quick.insertAdjacentElement('afterend',details);else side.append(details);
  // Keep the import manager visible under the same programme/release panel.
  side.open=true;
+})();
+
+// V13.8: Reliable music/notes playlist editing and discoverability.
+(function(){
+ const musicSelect=$('chMusicPlaylistSelect');
+ const musicPanel=musicSelect.closest('details');
+ const notesSelect=$('chPlaylistSelect');
+ const notesPanel=notesSelect.closest('.ch-playlist-drawer');
+ const musicItems=$('chMusicPlaylistItems');
+ const notesItems=$('chPlaylistItems');
+ const library=$('chMusicLibrary');
+ function revealMusic(){
+  if(musicPanel)musicPanel.open=true;
+ }
+ function revealNotes(){
+  if(notesPanel)notesPanel.open=true;
+ }
+ function musicPlaylist(){return extra.musicPlaylists.find(p=>p.id===musicSelect.value)}
+ function refreshMusic(id){
+  chMusicRenderPlaylists();
+  if(id&&extra.musicPlaylists.some(p=>p.id===id))musicSelect.value=id;
+  chMusicRenderPlaylists();
+ }
+ // Create then select, keeping the new playlist visible.
+ $('chMusicCreate').onclick=()=>{
+  const name=$('chMusicPlaylistName').value.trim();
+  if(!name)return toast('Enter a playlist name');
+  const p={id:'music'+Date.now(),name,items:[],names:{}};
+  extra.musicPlaylists.push(p);extraSave();
+  refreshMusic(p.id);revealMusic();
+  $('chMusicPlaylistName').value='';
+  toast('Playlist created. Add songs using + Playlist in Albums & folders.');
+ };
+ // Add whole logical tracks to the chosen playlist, without silently creating a hidden playlist.
+ library.addEventListener('click',e=>{
+  const button=e.target.closest('[data-maddgroup]');
+  if(!button)return;
+  e.stopImmediatePropagation();
+  e.preventDefault();
+  const group=chMusicVisibleGroups()[Number(button.dataset.maddgroup)];
+  if(!group)return;
+  let p=musicPlaylist();
+  if(!p){
+   const name=prompt('Name your new music playlist');
+   if(!name?.trim())return;
+   p={id:'music'+Date.now(),name:name.trim(),items:[],names:{}};
+   extra.musicPlaylists.push(p);
+  }
+  p.names=p.names||{};
+  for(const id of group.ids){
+   p.items.push(id);
+   p.names[id]=group.label;
+  }
+  extraSave();refreshMusic(p.id);revealMusic();
+  toast(group.label+' added to '+p.name);
+ },true);
+ // Build rows from the saved playlist order, retaining grouped A/B parts.
+ function renderOrderedMusic(){
+  const p=musicPlaylist();
+  if(!p){musicItems.innerHTML='<p class="muted">Select or create a music playlist.</p>';return}
+  if(!p.items.length){musicItems.innerHTML='<p class="muted">No songs yet. Open Albums & folders and tap + Playlist on a song.</p>';return}
+  const rows=[];
+  for(let i=0;i<p.items.length;){
+   const id=p.items[i],part=chMusicPart(id);
+   const isPair=part?.part==='a'&&i+1<p.items.length&&chMusicPart(p.items[i+1])?.key===part.key&&chMusicPart(p.items[i+1])?.part==='b';
+   const size=isPair?2:1;
+   const label=p.names?.[id]||chMusicDisplayTitle(id);
+   rows.push(`<div class="item ch-track-row"><div class="ch-track-info"><b>${rows.length+1}. ${safe(label)}</b><small>${isPair?'A + B · ':''}${size} audio file${size===1?'':'s'}</small></div><div class="ch-song-actions"><button data-v138-play="${i}">▶ Play</button><button data-v138-up="${i}">↑ Up</button><button data-v138-down="${i}">↓ Down</button><button data-v138-remove="${i}" class="danger">Remove</button></div></div>`);
+   i+=size;
+  }
+  musicItems.innerHTML=rows.join('');
+ }
+ const baseMusicRender=chMusicRenderPlaylists;
+ chMusicRenderPlaylists=function(){baseMusicRender();renderOrderedMusic()};
+ musicSelect.addEventListener('change',()=>{chMusicState.queue=null;chMusicState.playing=-1;chMusicRenderPlaylists()});
+ musicItems.addEventListener('click',e=>{
+  const button=e.target.closest('[data-v138-play],[data-v138-up],[data-v138-down],[data-v138-remove]');
+  if(!button)return;
+  e.stopImmediatePropagation();e.preventDefault();
+  const p=musicPlaylist();if(!p)return;
+  const attr=['play','up','down','remove'].find(x=>button.hasAttribute('data-v138-'+x));
+  const index=Number(button.getAttribute('data-v138-'+attr));
+  const part=chMusicPart(p.items[index]);
+  const size=part?.part==='a'&&chMusicPart(p.items[index+1])?.key===part.key&&chMusicPart(p.items[index+1])?.part==='b'?2:1;
+  if(attr==='play'){
+   chMusicState.queue=null;chMusicState.playing=-1;
+   chMusicPlayAt(index);return;
+  }
+  const blocks=[];
+  for(let i=0;i<p.items.length;){
+   const pt=chMusicPart(p.items[i]);
+   const n=pt?.part==='a'&&chMusicPart(p.items[i+1])?.key===pt.key&&chMusicPart(p.items[i+1])?.part==='b'?2:1;
+   blocks.push(p.items.slice(i,i+n));i+=n;
+  }
+  let offset=0,blockIndex=blocks.findIndex(b=>{const inside=index>=offset&&index<offset+b.length;offset+=b.length;return inside});
+  if(blockIndex<0)return;
+  if(attr==='remove')blocks.splice(blockIndex,1);
+  if(attr==='up'&&blockIndex>0)[blocks[blockIndex-1],blocks[blockIndex]]=[blocks[blockIndex],blocks[blockIndex-1]];
+  if(attr==='down'&&blockIndex<blocks.length-1)[blocks[blockIndex+1],blocks[blockIndex]]=[blocks[blockIndex],blocks[blockIndex+1]];
+  p.items=blocks.flat();
+  chMusicState.queue=null;chMusicState.playing=-1;
+  extraSave();refreshMusic(p.id);revealMusic();
+ },true);
+ // Make direct PDF page additions visible in the selected teaching playlist.
+ for(const id of ['chDirectAdd','chAddRange','chDirectPlaylist']){
+  $(id)?.addEventListener('click',()=>{revealNotes();setTimeout(()=>{chRenderPlaylists();},0)});
+ }
+ // Keep the saved PDF playlist visible when choosing a playlist in the top navigation.
+ const top=$('chTopPlaylistSelect');
+ if(top)top.addEventListener('change',revealNotes);
+ // Playlist buttons already provide page view, reorder, and removal.
+ // Avoid the hidden management panel when the user chooses "Playlists" at the top.
+ $('chTopPlaylists')?.addEventListener('click',revealNotes);
+ chMusicRenderPlaylists();
 })();
 </script></body></html>
