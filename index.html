@@ -331,6 +331,19 @@ a{color:#2168c8}a:hover{text-decoration:none}
 #choreo #chMusicSearch,#choreo #chFolderSearch{display:none!important}
 #choreo .ch-side .ch-quick-switch{display:flex!important;flex-direction:column;gap:7px}
 #choreo .ch-side .ch-quick-switch>div{width:100%}
+
+#choreo .ch-pdf-manager{margin:9px 0;border:1px solid #cadcf1;border-radius:10px;background:#fff}
+#choreo .ch-pdf-manager>summary{cursor:pointer;padding:11px;font-size:.87rem;font-weight:750;color:#21466e}
+#choreo .ch-pdf-manager[open]>summary{border-bottom:1px solid #dbe6f3}
+#choreo .ch-small-hint{font-size:.72rem;font-weight:400;color:#64748b;margin-left:4px}
+#choreo .ch-pdf-manager-body{padding:9px}
+#choreo .ch-pdf-manager-body p{margin:4px 0 10px}
+#choreo .ch-pdf-import{margin:8px 0}
+#choreo .ch-pdf-import label{display:block;font-weight:700;font-size:.78rem;margin:3px 0}
+#choreo .ch-pdf-import input[type=file]{display:block!important;width:100%;max-width:100%;box-sizing:border-box;font-size:.75rem}
+#choreo .ch-pdf-remove-actions{display:flex;flex-direction:column;gap:6px;border-top:1px solid #e2e8f0;padding-top:9px;margin-top:10px}
+#choreo .ch-pdf-remove-actions button{width:100%;margin:0;white-space:normal;font-size:.75rem}
+#choreo .ch-side>.row:empty{display:none!important}
 </style></head><body><header><div><h1>◆ Fitness Master Hub</h1><small>Your complete teaching workspace</small></div><button id="install" class="hidden">Install app</button></header><nav class="tabs" id="nav"><button data-tab="home" class="active">Home</button><button data-tab="library">Exercises</button><button data-tab="builder">Class Builder</button><button data-tab="plans">Saved Classes</button><button data-tab="timer">Class Timer</button><button data-tab="clients">Clients</button><button data-tab="notes">Teaching Notes</button><button data-tab="programmes">Programmes</button><button data-tab="specialists">Specialist Tools</button><button data-tab="choreo">Choreography</button><button data-tab="organiser">File Organiser</button><button data-tab="settings">Backup & Settings</button></nav><main class="shell">
 <section id="home" class="active"><div class="hero"><h2>Everything you teach. One place.</h2><p>Plan sessions, find exercises, manage clients and keep your teaching notes organised. All your data stays on this device unless you export it.</p><button data-go="builder">＋ Build a class</button> <button data-go="library">Browse exercises</button></div><div class="grid"><div class="card metric"><div class="metric-icon">🏋️</div><div><div class="stat" id="exerciseCount">0</div><div class="muted">Library exercises</div></div></div><div class="card metric"><div class="metric-icon">📋</div><div><div class="stat" id="planCount">0</div><div class="muted">Saved classes</div></div></div><div class="card metric"><div class="metric-icon">👥</div><div><div class="stat" id="clientCount">0</div><div class="muted">Clients</div></div></div></div><h2>Quick access</h2><div class="grid"><div class="card"><h3>🏋️ Class Builder</h3><p class="muted">Generate or manually assemble circuits, Yoga, Boxercise, strength and cardio classes.</p><button data-go="builder">Open builder</button></div><div class="card"><h3>🔎 Exercise Library</h3><p class="muted">Search by name, equipment and training type. Add your own exercises.</p><button data-go="library">Explore library</button></div><div class="card"><h3>⏱️ Class Timer</h3><p class="muted">Large work/rest countdown for circuit sessions.</p><button data-go="timer">Open timer</button></div><div class="card"><h3>💾 Backup</h3><p class="muted">Keep a portable copy of your saved classes, notes and clients.</p><button data-go="settings">Backup data</button></div></div><p class="notice">New modules: client programme studio, specialist class tools, choreography PDF viewing and file organisation. Advanced music integration and full health questionnaires are still in development.</p></section>
 <section id="library"><h2>Universal Exercise Library</h2><div class="card"><div class="row"><div><label>Search exercises</label><input id="search" placeholder="Name, muscles, equipment, instructions..."></div><div><label>Equipment</label><select id="filterEquip"><option value="">All equipment</option></select></div><div><label>Training type</label><select id="filterType"><option value="">All types</option></select></div></div><div class="grid"><div><label>Body area / muscle</label><input id="filterMuscle" placeholder="e.g. shoulders, glutes, core"></div><div><label>Movement pattern</label><select id="filterMovement"><option value="">All movements</option><option>Squat / Lunge</option><option>Hinge</option><option>Push</option><option>Pull</option><option>Carry</option><option>Rotation</option><option>Stability</option><option>Cardio</option><option>Other</option></select></div><div><label>Difficulty</label><select id="filterLevel"><option value="">All levels</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div><div><label>Impact</label><select id="filterImpact"><option value="">Any impact</option><option>Low / moderate</option><option>High</option></select></div><div><label>Body position</label><select id="filterPosition"><option value="">Any position</option><option>Seated</option><option>Standing / mixed</option><option>Floor</option><option>Hanging</option></select></div><div><label>Sort by</label><select id="filterSort"><option value="name">Exercise name</option><option value="equipment">Equipment</option><option value="type">Training type</option><option value="level">Difficulty</option></select></div></div><div class="row"><button id="clearExerciseFilters">Clear filters</button><button id="exportExerciseCsv">Export exercise list CSV</button></div><p id="resultsCount" class="muted"></p><div id="exerciseList"></div></div><div class="card"><h3>Add your own exercise</h3><div class="grid"><div><label>Exercise name</label><input id="newName"></div><div><label>Equipment</label><input id="newEquip" placeholder="e.g. Dumbbell"></div><div><label>Type</label><select id="newType"><option>Strength</option><option>Cardio</option><option>Boxercise</option><option>Yoga</option><option>Seniors</option><option>Mobility</option><option>Core</option></select></div><div><label>Muscles / focus</label><input id="newMuscle"></div></div><label>Technique and adaptations</label><textarea id="newDesc"></textarea><label>Demo URL (optional)</label><input id="newUrl" placeholder="https://..."><button class="primary" id="addExercise">Add exercise</button></div></section>
@@ -1696,5 +1709,32 @@ $('chPageSongUnlink').onclick=()=>{
  const releaseLabel=$('chViewRelease').previousElementSibling;
  if(releaseLabel?.tagName==='LABEL')releaseLabel.textContent='Named PDF releases';
  chQuickReleases();
+})();
+
+// V13.6: make PDF imports and removal easy to find without changing saved files.
+(function(){
+ const side=document.querySelector('#choreo .ch-side');
+ if(!side)return;
+ const details=document.createElement('details');details.className='ch-pdf-manager';
+ details.innerHTML='<summary>📁 Manage PDF Library <span class="ch-small-hint">Add / remove PDFs</span></summary><div class="ch-pdf-manager-body"><p class="muted">Add one PDF or a folder of releases. Previously imported PDFs stay in the library.</p></div>';
+ const body=details.querySelector('.ch-pdf-manager-body');
+ const pdf=$('chPdf'),folder=$('chFolder');
+ for(const [input,label] of [[pdf,'Add individual PDF'],[folder,'Add entire PDF folder']]){
+  if(!input)continue;
+  const wrapper=document.createElement('div');wrapper.className='ch-pdf-import';
+  const text=document.createElement('label');text.textContent=label;text.htmlFor=input.id;
+  wrapper.append(text,input);body.append(wrapper);
+ }
+ const remove=$('chRemoveRelease'),clear=$('chClearLibrary');
+ if(remove&&clear){
+  const actions=document.createElement('div');actions.className='ch-pdf-remove-actions';
+  actions.append(remove,clear);body.append(actions);
+  const note=document.createElement('p');note.className='muted';note.textContent='Removing a PDF only deletes the copy stored in this app. Your original PDF remains untouched.';body.append(note);
+ }
+ const status=$('chFolderCount');if(status)body.prepend(status);
+ const quick=side.querySelector('.ch-quick-switch');
+ if(quick)quick.insertAdjacentElement('afterend',details);else side.append(details);
+ // Keep the import manager visible under the same programme/release panel.
+ side.open=true;
 })();
 </script></body></html>
