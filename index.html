@@ -391,10 +391,10 @@ a{color:#2168c8}a:hover{text-decoration:none}
 #choreo #chPdfSongPicker{width:100%;font-size:.8rem;padding:7px}
 #choreo #chPdfTagSong{font-size:.8rem;padding:8px}
 
-body>nav#nav{display:none!important}
-main.shell>section:not(#choreo){display:none!important}
+
+
 main.shell{max-width:1550px;padding-top:12px}
-#choreo{display:block!important}
+
 header{padding-top:12px;padding-bottom:12px}
 header h1{font-size:1.18rem}
 #choreo .ch-top-actions{top:0}
@@ -2265,12 +2265,5 @@ $('chPageSongUnlink').onclick=()=>{
  $('chTopPlaylists')?.addEventListener('click',()=>{holder.open=true;pdf.scrollIntoView({behavior:'smooth',block:'start'})});
 })();
 
-// Standalone shell: use the original working choreography module and storage.
-(function(){
- const start=()=>{try{show('choreo')}catch(e){
-  document.querySelectorAll('main.shell>section').forEach(el=>el.classList.toggle('active',el.id==='choreo'));
- }};
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});
- else start();
-})();
+
 </script></body></html>
