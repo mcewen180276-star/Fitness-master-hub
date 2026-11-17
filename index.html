@@ -377,6 +377,18 @@ a{color:#2168c8}a:hover{text-decoration:none}
 #choreo #chPlaylistWorkbenchPanels .ch-music-accordion{display:block!important}
 @media(max-width:1000px){#choreo #chViewerPlaylistBar{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto}#choreo #chViewerAddMusic{grid-column:1/-1;justify-self:start}}
 @media(max-width:650px){#choreo #chViewerPlaylistBar{grid-template-columns:minmax(0,1fr) auto;gap:7px}#choreo #chViewerPlaylistBar label{min-width:0}#choreo #chViewerAddMusic{grid-column:auto}#choreo .ch-workbench-heading span{display:none}}
+
+#choreo #chPdfTrackTags{margin:8px 0 12px;padding:10px;border:1px solid #c9d8e8;border-radius:10px;background:#f7faff}
+#choreo .ch-pdf-tags-title{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:.88rem}
+#choreo #chPdfTagsCount{font-size:.75rem;color:#52677f}
+#choreo .ch-pdf-tags-list{max-height:190px;overflow-y:auto;margin:6px 0}
+#choreo .ch-pdf-tag-row{display:flex;align-items:center;gap:5px;padding:5px 0;border-bottom:1px solid #e3eaf3}
+#choreo .ch-pdf-tag-row>span{flex:1;min-width:0;overflow-wrap:anywhere;font-size:.8rem}
+#choreo .ch-pdf-tag-row button{font-size:.75rem;padding:6px 8px;margin:0}
+#choreo .ch-pdf-tags-controls{display:flex;align-items:end;gap:6px;flex-wrap:wrap}
+#choreo .ch-pdf-tags-controls label{font-size:.78rem;font-weight:600;flex:1 1 150px}
+#choreo #chPdfSongPicker{width:100%;font-size:.8rem;padding:7px}
+#choreo #chPdfTagSong{font-size:.8rem;padding:8px}
 </style></head><body><header><div><h1>◆ Fitness Master Hub</h1><small>Your complete teaching workspace</small></div><button id="install" class="hidden">Install app</button></header><nav class="tabs" id="nav"><button data-tab="home" class="active">Home</button><button data-tab="library">Exercises</button><button data-tab="builder">Class Builder</button><button data-tab="plans">Saved Classes</button><button data-tab="timer">Class Timer</button><button data-tab="clients">Clients</button><button data-tab="notes">Teaching Notes</button><button data-tab="programmes">Programmes</button><button data-tab="specialists">Specialist Tools</button><button data-tab="choreo">Choreography</button><button data-tab="organiser">File Organiser</button><button data-tab="settings">Backup & Settings</button></nav><main class="shell">
 <section id="home" class="active"><div class="hero"><h2>Everything you teach. One place.</h2><p>Plan sessions, find exercises, manage clients and keep your teaching notes organised. All your data stays on this device unless you export it.</p><button data-go="builder">＋ Build a class</button> <button data-go="library">Browse exercises</button></div><div class="grid"><div class="card metric"><div class="metric-icon">🏋️</div><div><div class="stat" id="exerciseCount">0</div><div class="muted">Library exercises</div></div></div><div class="card metric"><div class="metric-icon">📋</div><div><div class="stat" id="planCount">0</div><div class="muted">Saved classes</div></div></div><div class="card metric"><div class="metric-icon">👥</div><div><div class="stat" id="clientCount">0</div><div class="muted">Clients</div></div></div></div><h2>Quick access</h2><div class="grid"><div class="card"><h3>🏋️ Class Builder</h3><p class="muted">Generate or manually assemble circuits, Yoga, Boxercise, strength and cardio classes.</p><button data-go="builder">Open builder</button></div><div class="card"><h3>🔎 Exercise Library</h3><p class="muted">Search by name, equipment and training type. Add your own exercises.</p><button data-go="library">Explore library</button></div><div class="card"><h3>⏱️ Class Timer</h3><p class="muted">Large work/rest countdown for circuit sessions.</p><button data-go="timer">Open timer</button></div><div class="card"><h3>💾 Backup</h3><p class="muted">Keep a portable copy of your saved classes, notes and clients.</p><button data-go="settings">Backup data</button></div></div><p class="notice">New modules: client programme studio, specialist class tools, choreography PDF viewing and file organisation. Advanced music integration and full health questionnaires are still in development.</p></section>
 <section id="library"><h2>Universal Exercise Library</h2><div class="card"><div class="row"><div><label>Search exercises</label><input id="search" placeholder="Name, muscles, equipment, instructions..."></div><div><label>Equipment</label><select id="filterEquip"><option value="">All equipment</option></select></div><div><label>Training type</label><select id="filterType"><option value="">All types</option></select></div></div><div class="grid"><div><label>Body area / muscle</label><input id="filterMuscle" placeholder="e.g. shoulders, glutes, core"></div><div><label>Movement pattern</label><select id="filterMovement"><option value="">All movements</option><option>Squat / Lunge</option><option>Hinge</option><option>Push</option><option>Pull</option><option>Carry</option><option>Rotation</option><option>Stability</option><option>Cardio</option><option>Other</option></select></div><div><label>Difficulty</label><select id="filterLevel"><option value="">All levels</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div><div><label>Impact</label><select id="filterImpact"><option value="">Any impact</option><option>Low / moderate</option><option>High</option></select></div><div><label>Body position</label><select id="filterPosition"><option value="">Any position</option><option>Seated</option><option>Standing / mixed</option><option>Floor</option><option>Hanging</option></select></div><div><label>Sort by</label><select id="filterSort"><option value="name">Exercise name</option><option value="equipment">Equipment</option><option value="type">Training type</option><option value="level">Difficulty</option></select></div></div><div class="row"><button id="clearExerciseFilters">Clear filters</button><button id="exportExerciseCsv">Export exercise list CSV</button></div><p id="resultsCount" class="muted"></p><div id="exerciseList"></div></div><div class="card"><h3>Add your own exercise</h3><div class="grid"><div><label>Exercise name</label><input id="newName"></div><div><label>Equipment</label><input id="newEquip" placeholder="e.g. Dumbbell"></div><div><label>Type</label><select id="newType"><option>Strength</option><option>Cardio</option><option>Boxercise</option><option>Yoga</option><option>Seniors</option><option>Mobility</option><option>Core</option></select></div><div><label>Muscles / focus</label><input id="newMuscle"></div></div><label>Technique and adaptations</label><textarea id="newDesc"></textarea><label>Demo URL (optional)</label><input id="newUrl" placeholder="https://..."><button class="primary" id="addExercise">Add exercise</button></div></section>
@@ -2055,5 +2067,89 @@ $('chPageSongUnlink').onclick=()=>{
  // Only show the main page's PDF toolbar and playlist workbench once.
  const intro=document.querySelector('#choreo .section-intro');
  if(intro)intro.textContent='Choose a Les Mills programme and release, then work with your choreography and music playlists beside the PDF viewer.';
+})();
+
+// V14.2: Reciprocal PDF-page ↔ music-track tagging.
+// The relationship is saved once in existing musicLinks; both directions read it.
+(function(){
+ const anchor=document.querySelector('#choreo .ch-page-song-link');
+ if(!anchor)return;
+ const panel=document.createElement('div');
+ panel.id='chPdfTrackTags';
+ panel.innerHTML='<div class="ch-pdf-tags-title"><b>Music tagged to this PDF page</b><span id="chPdfTagsCount"></span></div><div id="chPdfTaggedTracks" class="ch-pdf-tags-list"><p class="muted">Open a PDF to view its linked songs.</p></div><div class="ch-pdf-tags-controls"><label for="chPdfSongPicker">Tag this page with a music track</label><select id="chPdfSongPicker"><option value="">Choose an imported song…</option></select><button type="button" id="chPdfTagSong" class="primary">Tag song to page</button></div>';
+ anchor.insertAdjacentElement('afterend',panel);
+ const songSelect=$('chPdfSongPicker');
+ const escapeText=window.safe||((v)=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])));
+ function update(){
+  const key=chMusicCurrentKey(),page=Number(pdfPage);
+  const files=chMusicState.files;
+  const chosen=songSelect.value;
+  songSelect.replaceChildren(new Option('Choose an imported song…',''));
+  for(const [id] of files){
+   songSelect.add(new Option(chMusicDisplayTitle(id),id));
+  }
+  if(files.has(chosen))songSelect.value=chosen;
+  else if(files.has(chMusicState.selected))songSelect.value=chMusicState.selected;
+  const linked=key?Object.entries(extra.musicLinks||{}).filter(([,pages])=>Array.isArray(pages)&&pages.some(p=>p.key===key&&Number(p.page)===page)):[];
+  $('chPdfTagsCount').textContent=key?`${linked.length} linked`:'';
+  $('chPdfTaggedTracks').innerHTML=!key?'<p class="muted">Open a PDF page first.</p>':
+   !linked.length?'<p class="muted">No song linked to this page yet.</p>':
+   linked.map(([id],i)=>`<div class="ch-pdf-tag-row"><span>${escapeText(chMusicDisplayTitle(id))}</span><button type="button" data-pdf-tag-play="${i}" ${files.has(id)?'':'disabled title="Import this music file again to play"'}>▶ Play</button><button type="button" data-pdf-tag-remove="${i}">Unlink</button></div>`).join('');
+  panel._linked=linked.map(([id])=>id);
+ }
+ $('chPdfTagSong').addEventListener('click',()=>{
+  const key=chMusicCurrentKey(),id=songSelect.value;
+  if(!key)return toast('Open a PDF page first');
+  if(!id||!chMusicState.files.has(id))return toast('Choose an imported music track first');
+  const pages=extra.musicLinks[id]||[];
+  if(!pages.some(p=>p.key===key&&Number(p.page)===Number(pdfPage))){
+   pages.push({key,page:Number(pdfPage)});
+   extra.musicLinks[id]=pages;extraSave();
+  }
+  chMusicState.selected=id;
+  chMusicRenderPlaylists();
+  chMusicRenderLinks();
+  update();
+  toast('PDF page '+pdfPage+' tagged with '+chMusicDisplayTitle(id));
+ });
+ $('chPdfTaggedTracks').addEventListener('click',e=>{
+  const play=e.target.closest('[data-pdf-tag-play]');
+  const remove=e.target.closest('[data-pdf-tag-remove]');
+  const index=Number((play||remove)?.dataset[play?'pdfTagPlay':'pdfTagRemove']);
+  if(!Number.isInteger(index))return;
+  const id=panel._linked?.[index];if(!id)return;
+  if(remove){
+   const key=chMusicCurrentKey(),page=Number(pdfPage);
+   extra.musicLinks[id]=(extra.musicLinks[id]||[]).filter(p=>!(p.key===key&&Number(p.page)===page));
+   if(!extra.musicLinks[id].length)delete extra.musicLinks[id];
+   extraSave();chMusicRenderPlaylists();chMusicRenderLinks();update();
+   toast('Song unlinked from this PDF page');
+  }else if(play){
+   const queue=chMusicActiveQueue();
+   const position=queue.indexOf(id);
+   if(position>=0){
+    if(chMusicState.queue)chMusicPlayQueueAt(position);
+    else chMusicPlayAt(position);
+   }else{
+    const url=chMusicUrl(id);
+    if(!url)return toast('Import this music file again to play');
+    chMusicState.selected=id;
+    const audio=$('chAudio');audio.src=url;
+    $('chNowPlaying').textContent=chMusicDisplayTitle(id);
+    audio.play().catch(()=>toast('Tap Play to start audio'));
+    chMusicRenderPlaylists();
+   }
+   update();
+  }
+ });
+ // Update on PDF navigation, playlist changes and linking/unlinking in both viewer modes.
+ const beforeNavigate=chNavigate;
+ chNavigate=function(...args){const result=beforeNavigate.apply(this,args);update();return result};
+ const beforeRender=chMusicRenderPlaylists;
+ chMusicRenderPlaylists=function(...args){const result=beforeRender.apply(this,args);update();return result};
+ for(const id of ['chViewSelected','chOpen','chPageSongLink','chPageSongUnlink','chFullTag','chFullUnlink','chFullSavePages','chMusicLinkCurrent','chMusicLinkPages','chMusicClearLinks']){
+  $(id)?.addEventListener('click',()=>queueMicrotask(update));
+ }
+ update();
 })();
 </script></body></html>
