@@ -18,7 +18,7 @@ const BASE={"Boxercise": ["Jab\u2013cross\u2013hook pad combination", "Jab\u2013
 function clock(){let m=Math.floor(seconds/60),s=seconds%60;$('clock').textContent=m+':'+String(s).padStart(2,'0');$('phase').textContent=working?'WORK':'REST';updateNow()}function reset(){clearInterval(tick);playing=false;station=0;working=true;seconds=Math.max(5,+$('work').value||45);clock()}function advance(){if(working){working=false;seconds=Math.max(0,+$('rest').value||0);if(seconds===0)advance()}else{working=true;station=(station+1)%Math.max(1,plan.length);seconds=Math.max(5,+$('work').value||45)}clock()}$('start').onclick=()=>{if(playing){clearInterval(tick);playing=false;return}playing=true;tick=setInterval(()=>{seconds--;if(seconds<=0)advance();else clock()},1000)};$('next').onclick=()=>{station=(station+1)%Math.max(1,plan.length);working=true;seconds=Math.max(5,+$('work').value||45);clock()};$('reset').onclick=reset;$('fullscreen').onclick=()=>document.documentElement.requestFullscreen?.().catch(()=>{});$('work').onchange=reset;selectStudio(studio);renderSaved();reset();
 </script><script>
 (function(){
-const apps=[['Yoga','yoga'],['Pilates','pilates'],['Prime Movers / Seniors','seniors'],['Circuit','circuit']];
+const apps=[['Yoga','yoga'],['Pilates','pilates'],['Prime Movers / Seniors','seniors'],['✨ Circuit + Gemini AI','circuit']];
 const buttons=document.getElementById('fullStudioButtons'),host=document.getElementById('fullStudioHost');
 buttons.innerHTML=apps.map(([name,id])=>'<button type="button" class="secondary" data-app="'+id+'">'+name+'</button>').join('');
 buttons.onclick=e=>{const btn=e.target.closest('[data-app]');if(!btn)return;
