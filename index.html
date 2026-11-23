@@ -2824,4 +2824,32 @@ document.addEventListener('pointerdown',e=>{if(!top.contains(e.target))menus.for
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
 </script>
-<script id="circuitFullscreenBridge">window.addEventListener('message',function(e){if(!e.data||e.data.type!=='circuit-instructor-fullscreen')return;const frame=document.getElementById('circuitStudioFrame')||document.getElementById('classBuilderStudioFrame');if(!frame||e.source!==frame.contentWindow)return;if(e.data.active){frame.style.position='fixed';frame.style.inset='0';frame.style.width='100vw';frame.style.height='100dvh';frame.style.zIndex='2147483000';frame.style.background='#071a2c';frame.setAttribute('allowfullscreen','');frame.setAttribute('allow','fullscreen');if(frame.requestFullscreen)frame.requestFullscreen().catch(()=>{});}else{frame.style.position='';frame.style.inset='';frame.style.width='';frame.style.height='';frame.style.zIndex='';frame.style.background='';if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});}});</script></body></html>
+<script id="circuitFullscreenBridge">window.addEventListener('message',function(e){if(!e.data||e.data.type!=='circuit-instructor-fullscreen')return;const frame=document.getElementById('circuitStudioFrame')||document.getElementById('classBuilderStudioFrame');if(!frame||e.source!==frame.contentWindow)return;if(e.data.active){frame.style.position='fixed';frame.style.inset='0';frame.style.width='100vw';frame.style.height='100dvh';frame.style.zIndex='2147483000';frame.style.background='#071a2c';frame.setAttribute('allowfullscreen','');frame.setAttribute('allow','fullscreen');if(frame.requestFullscreen)frame.requestFullscreen().catch(()=>{});}else{frame.style.position='';frame.style.inset='';frame.style.width='';frame.style.height='';frame.style.zIndex='';frame.style.background='';if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});}});</script><script id="hubV56SectionSelectFix">
+(function(){
+ function setup(){
+  const select=document.getElementById('hubPageSelect');
+  const nav=document.getElementById('nav');
+  if(!select||!nav)return;
+  const buttons=[...nav.querySelectorAll('button[data-tab]')];
+  if(!buttons.length)return;
+  select.replaceChildren(...buttons.map(b=>new Option(b.textContent.trim(),b.dataset.tab)));
+  const current=()=>nav.querySelector('button[data-tab].active')?.dataset.tab||document.querySelector('main section.active')?.id||'home';
+  select.value=current();
+  select.addEventListener('change',()=>{
+   const id=select.value;
+   const btn=buttons.find(b=>b.dataset.tab===id);
+   if(!btn)return;
+   btn.click();
+   if(!document.getElementById(id)?.classList.contains('active')){
+    document.querySelectorAll('main section').forEach(el=>el.classList.toggle('active',el.id===id));
+    buttons.forEach(el=>el.classList.toggle('active',el.dataset.tab===id));
+   }
+   select.value=id;
+   window.scrollTo(0,0);
+  });
+  nav.addEventListener('click',()=>{select.value=current()});
+  document.querySelectorAll('[data-go]').forEach(el=>el.addEventListener('click',()=>{select.value=current()}));
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
+})();
+</script></body></html>
