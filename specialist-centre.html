@@ -22,7 +22,7 @@ const apps=[['Yoga','yoga'],['Pilates','pilates'],['Prime Movers / Seniors','sen
 const buttons=document.getElementById('fullStudioButtons'),host=document.getElementById('fullStudioHost');
 buttons.innerHTML=apps.map(([name,id])=>'<button type="button" class="secondary" data-app="'+id+'">'+name+'</button>').join('');
 buttons.onclick=e=>{const btn=e.target.closest('[data-app]');if(!btn)return;
-const appFile=btn.dataset.app+'-studio.html';
+const appFile=btn.dataset.app+'-studio.html?v=59';
 host.replaceChildren();
 const frame=document.createElement('iframe');
 frame.title=btn.textContent+' full studio';frame.style.cssText='width:100%;height:82vh;min-height:650px;border:1px solid #426a82;border-radius:10px;background:#fff';frame.setAttribute('allow','fullscreen');
