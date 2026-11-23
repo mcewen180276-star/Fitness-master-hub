@@ -6,7 +6,7 @@
 header{background:#fff;border-bottom:1px solid #e6ebf1;padding:19px max(20px,calc((100vw - 1180px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px}
 header h1{font-size:1.3rem;letter-spacing:-.04em;margin:0;color:#17283e}
 header small{color:#758399;font-size:.8rem}
-.shell{max-width:1180px;margin:0 auto;padding:25px 20px 75px}
+.shell{max-width:none;width:100%;box-sizing:border-box;margin:0 auto;padding:16px clamp(10px,2vw,28px) 65px}
 nav{display:flex;gap:6px;overflow-x:auto;position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid #e7ebf1;padding:9px max(16px,calc((100vw - 1180px)/2));scrollbar-width:thin}
 nav button{flex-shrink:0;white-space:nowrap;background:transparent;border:0;color:#69788d;font-weight:650;padding:11px 15px;border-radius:10px}
 nav button.active{background:#eaf2ff;color:#1759b2}nav button:hover{background:#f1f5fa}
@@ -394,7 +394,7 @@ a{color:#2168c8}a:hover{text-decoration:none}
 
 
 
-main.shell{max-width:1550px;padding-top:12px}
+main.shell{max-width:none;padding-top:12px}
 
 header{padding-top:12px;padding-bottom:12px}
 header h1{font-size:1.18rem}
@@ -620,35 +620,7 @@ function programmeHTML(p){return `<!doctype html><html><head><meta charset="utf-
 #choreo .ch-playlists{border-color:#cbdcf5}
 #choreo .ch-playlists h3{font-size:1.15rem}
 @media(max-width:640px){#choreo .ch-quick-switch{grid-template-columns:1fr 1fr}#choreo .ch-quick-switch button{grid-column:1/-1}#choreo #chPdfStage{height:56vh!important}}
-</style></head><body><h1>${safe(p.name)}</h1><p>Goal: ${safe(p.goal)}</p>${p.days.map(day=>`<section><h2>${safe(day.name)}</h2><ol>${day.exercises.map(x=>{const ex=all().find(a=>a.id===x.id);return `<li><b>${safe(ex?.name||'Unknown')}</b> — ${safe(x.sets)} sets × ${safe(x.reps)}, ${safe(x.rest)}s rest${x.warm?`, ${x.warm} warm-up set(s) of 16–20 light reps`:''}<p>${safe(ex?.desc||'')}</p>${ex?`<a href="${safe(demo(ex))}">Exercise demo search</a>`:''}</li>`}).join('')}</ol></section>`).join('')}<script id="hubV55NavScript">
-(function(){
- function init(){
-  const select=document.getElementById('hubPageSelect'),nav=document.getElementById('nav');
-  if(!select||!nav)return;
-  const buttons=Array.from(nav.querySelectorAll('button[data-tab]'));
-  select.replaceChildren();
-  buttons.forEach(b=>{let o=document.createElement('option');o.value=b.dataset.tab;o.textContent=b.textContent.trim();select.add(o)});
-  function active(){return nav.querySelector('button.active[data-tab]')?.dataset.tab||'home'}
-  select.value=active();
-  select.addEventListener('change',function(){
-    const id=this.value,button=buttons.find(b=>b.dataset.tab===id);
-    if(!button)return;
-    // The original app registers its own onclick on each nav button.
-    // Dispatching a click preserves its existing section and rendering logic.
-    button.click();
-    // Fallback for scripts which replace their navigation handler later.
-    if(!document.getElementById(id)?.classList.contains('active')){
-      document.querySelectorAll('main section').forEach(section=>section.classList.toggle('active',section.id===id));
-      buttons.forEach(b=>b.classList.toggle('active',b.dataset.tab===id));
-    }
-    this.value=id;
-    window.scrollTo({top:0,behavior:'instant'});
-  });
-  nav.addEventListener('click',()=>{select.value=active()});
- }
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
-})();
-</script></body></html>`}
+</style></head><body><h1>${safe(p.name)}</h1><p>Goal: ${safe(p.goal)}</p>${p.days.map(day=>`<section><h2>${safe(day.name)}</h2><ol>${day.exercises.map(x=>{const ex=all().find(a=>a.id===x.id);return `<li><b>${safe(ex?.name||'Unknown')}</b> — ${safe(x.sets)} sets × ${safe(x.reps)}, ${safe(x.rest)}s rest${x.warm?`, ${x.warm} warm-up set(s) of 16–20 light reps`:''}<p>${safe(ex?.desc||'')}</p>${ex?`<a href="${safe(demo(ex))}">Exercise demo search</a>`:''}</li>`}).join('')}</ol></section>`).join('')}</body></html>`}
 $('progSaved').onclick=e=>{const b=e.target.closest('button');if(!b)return;const id=Number(b.dataset.openProg||b.dataset.printProg||b.dataset.exportProg||b.dataset.deleteProg);const p=extra.programmes.find(x=>x.id===id);if(!p)return;if(b.dataset.deleteProg){if(confirm('Delete this programme?')){extra.programmes=extra.programmes.filter(x=>x.id!==id);extraSave();programmeRender()}return}if(b.dataset.openProg){draft=JSON.parse(JSON.stringify(p));dayIndex=0;$('progName').value=p.name;$('progGoal').value=p.goal;programmeClients();$('progClient').value=p.client||'';programmeRender();toast('Programme loaded as editable draft')}else if(b.dataset.exportProg)download(programmeHTML(p),'programme-'+id+'.html','text/html');else{const w=window.open('','_blank');if(w){w.document.write(programmeHTML(p));w.document.close();w.onload=()=>w.print()}else toast('Allow popups to print')}};
 let specialistItems=[],specialistTitle='',specialistDetails='';
 function specialistRender(){const items=specialistItems.map((x,i)=>`<li>${safe(x)}</li>`).join('');$('specialOutput').innerHTML=`<h3>${safe(specialistTitle)}</h3><p>${safe(specialistDetails)}</p><ol>${items}</ol>`}
